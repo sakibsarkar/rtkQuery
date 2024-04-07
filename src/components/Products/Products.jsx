@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetProductsQuery } from "../../redux/api/apiSlice";
+import { useGetProductsQuery } from "../../redux/features/api/apiSlice";
 import ProductCard from "../../utils/ProductCard/ProductCard";
 const Products = () => {
   const { data: products } = useGetProductsQuery();

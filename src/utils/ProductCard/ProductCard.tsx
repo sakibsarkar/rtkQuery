@@ -2,15 +2,18 @@ import React, { useRef } from "react";
 import {
   useDeleteProductMutation,
   useUpdateProductMutation,
-} from "../../redux/api/apiSlice";
+} from "../../redux/features/api/apiSlice";
 
 const ProductCard = ({ data }) => {
   const { id, title, price, description, category, image, rating } = data || {};
 
+  // modal ref ---
   const modalRef = useRef(null);
 
   const [deleteProduct] = useDeleteProductMutation();
   const [updateProduct] = useUpdateProductMutation();
+
+  // product delete function-----
   const handleDelete = () => {
     deleteProduct(data);
   };
@@ -90,11 +93,14 @@ const ProductCard = ({ data }) => {
                 <button
                   className="btn bg-[#24209c] text-white flex-1"
                   type="button"
-                  onClick={() => modalRef.current.close()}
+                  onClick={() => modalRef.current?.close()}
                 >
                   close
                 </button>
-                <button type="submit" className="flex-1 bg-[#3da83d] ">
+                <button
+                  type="submit"
+                  className="btn flex-1 bg-[#3da83d] text-white"
+                >
                   Update
                 </button>
               </div>
