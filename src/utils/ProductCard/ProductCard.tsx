@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import toast from "react-hot-toast";
 import {
   useDeleteProductMutation,
   useUpdateProductMutation,
@@ -15,7 +16,9 @@ const ProductCard = ({ data }) => {
 
   // product delete function-----
   const handleDelete = () => {
-    deleteProduct(data);
+    deleteProduct(data).then((res) => {
+      toast.success("delete succesfull");
+    });
   };
   const hs = (e) => {
     e.preventDefault();
@@ -31,6 +34,7 @@ const ProductCard = ({ data }) => {
       description: descriptionUpdate,
     }).then((res) => {
       modalRef.current?.close();
+      toast.success("Update succesfull");
     });
   };
   return (

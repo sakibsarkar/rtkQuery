@@ -1,6 +1,6 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { useAddProductMutation } from "../../redux/features/api/apiSlice";
-
 const AddProduct = () => {
   const [addProduct] = useAddProductMutation();
 
@@ -13,7 +13,9 @@ const AddProduct = () => {
       image: "https://i.pravatar.cc",
       category: "electronic",
     };
-    addProduct(productData);
+    addProduct(productData).then((res) => {
+      toast.success("delete succesfull");
+    });
   };
 
   return (
